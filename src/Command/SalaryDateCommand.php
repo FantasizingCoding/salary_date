@@ -36,6 +36,8 @@ class SalaryDateCommand extends Command
      * @param OutputInterface $output An OutputInterface instance
      * 
      * @return int Command exit code (0 for success, 1 for error)
+     * 
+     * @throws \Throwable If an error occurs during execution
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -65,48 +67,55 @@ class SalaryDateCommand extends Command
             $monthNames[] = $date->format('F');
         }
 
-        $writer = Writer::createFromPath($csvFile, 'a+');
-        // iterate all months, and the results will be in order from current month to the last month
-        foreach($monthNames as $monthName) {
-            if (!in_array($monthName, $allRecords)) {
-                $fifthteenDay = new \DateTime('15 ' . $monthName);
-                $lastDay = new \DateTime('last day of ' . $monthName);
+        try {
+            $writer = Writer::createFromPath($csvFile, 'a+');
+            // iterate all months, and the results will be in order from current month to the last month
+            foreach($monthNames as $monthName) {
+                if (!in_array($monthName, $allRecords)) {
+                    $fifthteenDay = new \DateTime('15 ' . $monthName);
+                    $lastDay = new \DateTime('last day of ' . $monthName);
 
-                // determine bonus day
-                // rules: on the 15th of every month bonuses are paid, unless that day is a weekend. In that case, they are paid the first Wednesday after the 15th
-                if($fifthteenDay->format('N') <= 5) {
-                    $bonusDay = '15';
-                } else {
-                    for($i = 16; ; $i++) {
-                        $day = new \DateTime($i . ' ' . $monthName);
-                        if($day->format('N') == 3) {
-                            $bonusDay = $i;
-                            break;
+                    // determine bonus day
+                    // rules: on the 15th of every month bonuses are paid, unless that day is a weekend. In that case, they are paid the first Wednesday after the 15th
+                    if($fifthteenDay->format('N') <= 5) {
+                        $bonusDay = '15';
+                    } else {
+                        for($i = 16; ; $i++) {
+                            $day = new \DateTime($i . ' ' . $monthName);
+                            if($day->format('N') == 3) {
+                                $bonusDay = $i;
+                                break;
+                            }
                         }
                     }
-                }
 
-                // determine base salary day
-                // rules: base salaries are paid on the last day of the month unless that day is a weekend
-                if($lastDay->format('N') <= 5) {
-                    $salaryDay = $lastDay->format('j');
-                } else {
-                    for($i = $lastDay->format('j') - 1; ; $i--) {
-                        $day = new \DateTime($i . ' ' . $monthName);
-                        if($day->format('N') <= 5) {
-                            $salaryDay = $i;
-                            break;
+                    // determine base salary day
+                    // rules: base salaries are paid on the last day of the month unless that day is a weekend
+                    if($lastDay->format('N') <= 5) {
+                        $salaryDay = $lastDay->format('j');
+                    } else {
+                        for($i = $lastDay->format('j') - 1; ; $i--) {
+                            $day = new \DateTime($i . ' ' . $monthName);
+                            if($day->format('N') <= 5) {
+                                $salaryDay = $i;
+                                break;
+                            }
                         }
                     }
-                }
 
-                $writer->insertOne([$monthName, $salaryDay, $bonusDay]);
+                    $writer->insertOne([$monthName, $salaryDay, $bonusDay]);
+                }
             }
-        }
 
-        // return this if there was no problem running the command
-        // (it's equivalent to returning int(0))
-        return Command::SUCCESS;
+            // return this if there was no problem running the command
+            // (it's equivalent to returning int(0))
+            return Command::SUCCESS;
+
+        } catch (\Throwable $e) {
+            // Handle any exceptions that occurred during execution
+            $output->writeln("<error>An error occurred: {$e->getMessage()}</error>");
+            return Command::FAILURE;
+        }
     }
 
     /**
