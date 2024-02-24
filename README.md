@@ -3,7 +3,6 @@
 <br />
 <div align="center">
   <h3 align="center">Command for Salary Date</h3>
-
   <p align="center">
     Determine the date of base salary and monthly bonus
   </p>
@@ -53,15 +52,8 @@ Use the stable version Symfony 7 as the environment.
    ```sh
    composer install
    ```
-   or install it directly:
-   ```sh
-   composer require league/csv:^9.0
-   ```
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -69,9 +61,16 @@ Use the stable version Symfony 7 as the environment.
    ```sh
    php bin/console salary-date salary-date.csv
    ```
+   <img width="475" alt="result-1" src="https://github.com/FantasizingCoding/salary_date/assets/61125278/f7499ef6-c2cc-4d03-82f9-41b59b43af7c">
+
 2. Run the test:
    ```sh
    php bin/phpunit
    ```
+   <img width="727" alt="result-2" src="https://github.com/FantasizingCoding/salary_date/assets/61125278/dc971d58-0953-4d4e-b3b0-462585f316b7">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Documentation
+I have a own domain which is not being used, so here I'll deploy Symfony 7 on it and create web content in the "Symfony" way.
+The url "https://housesexpats.nl/doc" is set up to show the introduction of the "salary-date" command, where I'll employ twig template, symfony controllers, etc to practice the symfony knowledge.
