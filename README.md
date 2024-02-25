@@ -31,11 +31,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is the assessment for the interview. It's required to create a small command-line utility to help a fictional company determine the dates they need to pay salaries to their sales department.
+This is the assessment for the interview. It's required to create a small command-line utility to help a fictional company determine the dates they need to pay salaries to their sales department.<br/>
+The PHP source file for the command locates in:
+>src/Command/SalaryDateCommand.php
+
+The test file locates in:
+>tests/Command/SalaryDateCommandTest.php
 
 ### Built With
 
-The command-line utility is built with Symfony framework, with the test framework being PHPUnit.
+The command-line utility is built with Symfony framework, with the test framework being PHPUnit. League csv library is being used to read/write csv files.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -53,24 +58,24 @@ Use the stable version Symfony 7 as the environment.
    composer install
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 1. Run the command:
    ```sh
    php bin/console salary-date salary-date.csv
    ```
+   Screenshot for the desired csv file:<br/>
    <img width="475" alt="result-1" src="https://github.com/FantasizingCoding/salary_date/assets/61125278/f7499ef6-c2cc-4d03-82f9-41b59b43af7c">
 
 2. Run the test:
    ```sh
    php bin/phpunit
    ```
+   Screenshot for the test result:<br/>
    <img width="727" alt="result-2" src="https://github.com/FantasizingCoding/salary_date/assets/61125278/dc971d58-0953-4d4e-b3b0-462585f316b7">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Documentation
-I have a own domain which is not being used, so here I'll deploy Symfony 7 on it and create web content in the "Symfony" way.
-The url "https://housesexpats.nl/doc" is set up to show the introduction of the "salary-date" command, where I'll employ twig template, symfony controllers, etc to practice the symfony knowledge.
+I have a own domain (housesexpats.nl) which is not being used, so here I'll deploy Symfony 7 on it and create web content in the "Symfony" way.<br/>
+The url "https://housesexpats.nl/doc" is set up to show the introduction of the "salary-date" command, where a simple Twig template, controllers, and basic Tailwind is being employed.
