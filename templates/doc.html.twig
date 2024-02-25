@@ -1,9 +1,100 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to Symfony!</title>
+        <title>Assessment</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <h1>Documentation for "salary-date" command</h1>
+    <body class="text-gray-700 bg-white" style="font-family: 'Source Sans Pro', sans-serif">
+        <!--Nav-->
+        <nav>
+          <div
+            class="container mx-auto px-6 py-2 flex justify-between items-center"
+          >
+            <a
+              class="font-bold text-2xl lg:text-4xl"
+              href="#"
+            >
+              Documentation for "salary-date" command
+            </a>
+            <div class="block lg:hidden">
+              <button
+                class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none"
+              >
+                <svg
+                  class="fill-current h-3 w-3"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:block">
+              <ul class="inline-flex">
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!--Hero-->
+        <div
+          class="py-20"
+          style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
+        >
+          <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-2 text-white">
+              Determine the dates they need to pay salaries to their sales department
+            </h2>
+            <h3 class="text-2xl mb-8 text-gray-200">
+              Built with Symfony framework, PHPUnit and League csv.
+            </h3>
+          </div>
+        </div>
+        <!-- Features -->
+        <section class="container mx-auto px-6 p-10">
+          <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
+            Features
+          </h2>
+          <div class="flex items-center flex-wrap mb-20">
+            <div class="w-full md:w-1/2">
+              <h4 class="text-3xl text-gray-800 font-bold mb-3">
+                Generate the dates
+              </h4>
+              <p class="text-gray-600 mb-8">
+                The source php file for the command is: src/Command/SalaryDateCommand.php. It determines the payment date of base salary and monthly bonus.
+              </p>
+            </div>
+            <div class="w-full md:w-1/3">
+              <img class="rounded-lg" src="result-1.png" alt="Result" />
+            </div>
+          </div>
+          <div class="flex items-center flex-wrap mb-20">
+            <div class="w-full md:w-1/2">
+              <img class="rounded-lg" src="result-2.png" alt="Result" />
+            </div>
+            <div class="w-full md:w-1/2 pl-10">
+              <h4 class="text-3xl text-gray-800 font-bold mb-3">
+                Testing
+              </h4>
+              <p class="text-gray-600 mb-8">
+                A simple test case was created to test if the date of December is generated correctly or not.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center flex-wrap mb-20">
+            <div class="w-full md:w-1/2">
+              <h4 class="text-3xl text-gray-800 font-bold mb-3">
+                Documentation
+              </h4>
+              <p class="text-gray-600 mb-8">
+                The doc page (this page) is built with basic Tailwind classes and Twig templates. A controller was created for the url and fucntion. To be simple, Tailwind scripts are directly loaded by CDN insteading of npm building.
+              </p>
+            </div>
+            <div class="w-full md:w-1/2">
+            </div>
+          </div>
+        </section>
     </body>
 </html>
